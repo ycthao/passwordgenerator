@@ -4,18 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Website title -->
     <title>Password Generator</title>
+    <!-- Adding CSS style sheet -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+
+    <!-- Wrapper div that contain all other content -->
     <div class="wrapper">
       <header>
+        <!-- Displaying page's title -->
         <h1>Password Generator</h1>
       </header>
+    
+      <!-- Creating card div for password generator -->
       <div class="card">
+        
+        <!-- Name of the of that card -->
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
+        
+        <!-- text area where the password will show after it is generated -->
         <div class="card-body">
           <textarea
             readonly
@@ -24,11 +36,17 @@
             aria-label="Generated Password"
           ></textarea>
         </div>
+        
+        <!-- Generate a password by pressing the button -->
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
         </div>
+      
       </div>
     </div>
+    
+    <!-- Adding Javascript sheet -->
     <script src="script.js"></script>
+  
   </body>
 </html>
