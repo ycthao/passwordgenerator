@@ -8,6 +8,7 @@ let numbericArr = "0123456789";
 let specialCharactersArr = "\u0020\u0021\u0022\u0023\u0024\u0025\u0026\u0027\u0028\u0029\u002A\u002B\u002C\u002D\u002E\u002F\u003A\u003B\u003C\u003D\u003E\u003F\u0040\u005B\u005C\u005D\u005E\u005F\u0060\u007B\u007C\u007D\u007E";
 
 
+
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 
@@ -38,130 +39,112 @@ function generatePassword(){
   }
 
   let passwordchar = "";
+
+
   let randomPassword = "";
+  let setPassArr = "";
 
   // prompt to ask for lowercase
   let lowercase = confirm("Would you like your password to include lowercase?");
   if (lowercase) {
-    passwordchar = lowercaseArr;
+    setPassArr = setPassArr + setPassArr.concat(lowercaseArr);
+    alert("You choose lowercase.");
+  } else {
+    alert("You didn't choose lowercae.")
   }
 
   // prompt to ask for uppercase
   let uppercase = confirm("Would you like your password to include uppercase?");
   if (uppercase) {
-    passwordchar = lowercaseArr.concat(uppercaseArr);
+    setPassArr = setPassArr + setPassArr.concat(uppercaseArr);
+    alert("You choose uppercase.");
+  } else {
+    alert("You didn't choose uppercase.")
   }
 
   // prompt to ask for numeric
   let numeric = confirm("Would you like your password to include numbers?")
   if (numeric) {
-    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr);
+    setPassArr = setPassArr + setPassArr.concat(numbericArr);
+    alert("You choose number.");
+  } else {
+    alert("You didn't choose number.")
   }
 
   // prompt to ask for special characters
   let specialCharacters = confirm("Would you like your password to include special characters?")
   if (specialCharacters) {
-    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr, specialCharactersArr);
-  }
-
-
-
-  /*
-  if (lowercase && uppercase) {
-    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr, specialCharactersArr);
-  }
-  */
-
-// Answer based on lowercase been yes
-switch (lowercase) {
-  // all criteria are checked
-  // lowercase, uppercase, number, special characters
-  case (uppercase && numeric && specialCharacters):
-    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr, specialCharactersArr); 
-  break;
-
-  // three criteria 
-  // lowercase, uppercase, number
-  case (uppercase && numeric):
-    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr); 
-  break;
-  // lowercase, uppercase, special characters
-  case (uppercase && specialCharacters):
-    passwordchar = lowercaseArr.concat(uppercaseArr, specialCharactersArr); 
-  break;
-  // lowercase, number, special characters
-  case (numeric && specialCharacters):
-    passwordchar = lowercaseArr.concat(numbericArr, specialCharactersArr); 
-  break;
-  // lowercase, number, special characters
-  case (numeric && specialCharacters):
-    passwordchar = lowercaseArr.concat(numbericArr, specialCharactersArr); 
-  break;
-
-  // lowercase, uppercase
-  case (uppercase):
-    passwordchar = lowercaseArr.concat(uppercaseArr); 
-  break;
-  // lowercase, number
-  case (numeric):
-    passwordchar = lowercaseArr.concat(numbericArr); 
-  break;
-  // lowercase, specil characters
-  case (specialCharacters):
-    passwordchar = lowercaseArr.concat(specialCharactersArr); 
-  break;
-}
-
-
-
-
-
-
-
-
-  for (let i = 0; i < passwordLength; i++) {
-    randomPassword = randomPassword + passwordchar[Math.floor(Math.random() * passwordchar.length)];
-  }
-
-return randomPassword;
-}
-
-
-/*
-
-
-  // Switch statements
-
-
-
-
-
-
-
-  // All prompt choosen
-  if (lowercase === true && uppercase === true && numeric === true && specialCharacters === true) {
-    alert("You chose lowercase , uppercase, numbers, and special charcaters");
-
-    // lowercase, number, special characters
-  } else if (lowercase === true && uppercase !== true && numeric === true && specialCharacters === true) {
-      alert("You chose lowercase, numbers and special characters");
-
-    // lowercase, uppercase, special characters
-  } else if (lowercase === true && uppercase === true && numeric !== true && specialCharacters === true) {
-    alert("You chose lowercase, uppercase and special characters");    
-
-    // lowercase, uppercase, numbers
-  } else if (lowercase === true && uppercase === true && numeric === true && specialCharacters !== true) {
-    alert("You chose lowercase, uppercase and numbers");   
-
+    setPassArr = setPassArr + setPassArr.concat(specialCharactersArr);
+    alert("You choose special characters.");
   } else {
-      alert("You chose none");
+    alert("You didn't choose special characters.")
   }
+
+  // Validation if user doesn't pick a criteria
+  while(!lowercase) {
+    alert("Try again, choose at least one criteria.");
+
+    // prompt to ask for lowercase
+    let lowercase = confirm("Would you like your password to include lowercase?");
+    if (lowercase) {
+      setPassArr = setPassArr + setPassArr.concat(lowercaseArr);
+      alert("You choose lowercase.");
+    } else {
+      alert("You didn't choose lowercae.")
+    }
+
+    // prompt to ask for uppercase
+    let uppercase = confirm("Would you like your password to include uppercase?");
+    if (uppercase) {
+      setPassArr = setPassArr + setPassArr.concat(uppercaseArr);
+      alert("You choose uppercase.");
+    } else {
+      alert("You didn't choose uppercase.")
+    }
+
+    // prompt to ask for numeric
+    let numeric = confirm("Would you like your password to include numbers?")
+    if (numeric) {
+      setPassArr = setPassArr + setPassArr.concat(numbericArr);
+      alert("You choose number.");
+    } else {
+      alert("You didn't choose number.")
+    }
+
+    // prompt to ask for special characters
+    let specialCharacters = confirm("Would you like your password to include special characters?")
+    if (specialCharacters) {
+      setPassArr = setPassArr + setPassArr.concat(specialCharactersArr);
+      alert("You choose special characters.");
+    } else {
+      alert("You didn't choose special characters.")
+    }
+
+    // To break out of the loop if at least one of the criteria is true
+    if (lowercase || uppercase || numeric || specialCharacters) {
+      break;
+    }
+
+  }
+
+
+
+
 
   
 
 
 
-} 
 
-*/
+  for (let i = 0; i < passwordLength; i++) {
+    passwordchar = passwordchar + setPassArr[Math.floor(Math.random() * setPassArr.length)];
+  }
+
+
+  randomPassword = passwordchar;  
+
+
+
+return randomPassword;
+}
+
