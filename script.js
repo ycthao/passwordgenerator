@@ -29,13 +29,16 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword(){
 
   // prompt for password length 8 to 128 characters
-let passwordLength = prompt("Please choose the length of password between 8 to 128 characthers: ");
+  let passwordLength = prompt("Please choose the length of password between 8 to 128 characthers: ");
 
-// Validation if user doesn't pick in the right range
-while(passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-  alert("Try again, choose length between 8 and 128 characters.");
-  passwordLength = prompt("Please choose the length of password between 8 to 128 characthers: ");
-}
+  // Validation if user doesn't pick in the right range
+  while(passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+    alert("Try again, choose length between 8 and 128 characters.");
+    passwordLength = prompt("Please choose the length of password between 8 to 128 characthers: ");
+  }
+
+  let passwordchar = "";
+  let randomPassword = "";
 
   // prompt to ask for lowercase
   let lowercase = confirm("Would you like your password to include lowercase?");
@@ -50,6 +53,17 @@ while(passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
   let specialCharacters = confirm("Would you like your password to include special characters?")
 
 
+  
+  if (lowercase && uppercase) {
+    passwordchar = lowercaseArr.concat(uppercaseArr);
+  }
+
+
+
+
+  for (let i = 0; i < passwordLength; i++) {
+    randomPassword = randomPassword + passwordchar[Math.floor(Math.random() * passwordchar.length)];
+  }
 
 
 
@@ -57,7 +71,9 @@ while(passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
 
 
 
-let randomPassword = passwordLength;
+
+
+
 return randomPassword;
 }
 
