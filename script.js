@@ -37,8 +37,17 @@ while(passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
   passwordLength = prompt("Please choose the length of password between 8 to 128 characthers: ");
 }
 
+  // prompt to ask for lowercase
+  let lowercase = confirm("Would you like your password to include lowercase?");
 
+  // prompt to ask for uppercase
+  let uppercase = confirm("Would you like your password to include uppercase?");
 
+  // prompt to ask for numeric
+  let numeric = confirm("Would you like your password to include numbers?")
+
+  // prompt to ask for special characters
+  let specialCharacters = confirm("Would you like your password to include special characters?")
 
 
 
@@ -54,21 +63,6 @@ return randomPassword;
 
 
 /*
-if (passwordLength >= 8 && passwordLength <= 128) {
-  alert("Your password length is " + passwordLength);
-
-  // prompt to ask for lowercase
-  let lowercase = confirm("Would you like your password to include lowercase?");
-
-  // prompt to ask for uppercase
-  let uppercase = confirm("Would you like your password to include uppercase?");
-
-  // prompt to ask for numeric
-  let numeric = confirm("Would you like your password to include numbers?")
-
-  // prompt to ask for special characters
-  let specialCharacters = confirm("Would you like your password to include special characters?")
-
 
 
   // Switch statements
