@@ -32,12 +32,21 @@ function generatePassword(){
 let passwordLength = prompt("Please choose the length of password between 8 to 128 characthers: ");
 
 // Validation if user doesn't pick in the right range
-while(passwordLength < 8 || passwordLength > 128) {
-  alert("Try again");
+while(passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+  alert("Try again, choose length between 8 and 128 characters.");
   passwordLength = prompt("Please choose the length of password between 8 to 128 characthers: ");
 }
 
-alert(passwordLength);
+
+
+
+
+
+
+
+
+
+
 
 let randomPassword = passwordLength;
 return randomPassword;
