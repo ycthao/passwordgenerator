@@ -39,6 +39,8 @@ while(passwordLength < 8 || passwordLength > 128) {
 
 alert(passwordLength);
 
+let randomPassword = passwordLength;
+return randomPassword;
 }
 
 
