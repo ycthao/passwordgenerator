@@ -42,21 +42,79 @@ function generatePassword(){
 
   // prompt to ask for lowercase
   let lowercase = confirm("Would you like your password to include lowercase?");
+  if (lowercase) {
+    passwordchar = lowercaseArr;
+  }
 
   // prompt to ask for uppercase
   let uppercase = confirm("Would you like your password to include uppercase?");
+  if (uppercase) {
+    passwordchar = lowercaseArr.concat(uppercaseArr);
+  }
 
   // prompt to ask for numeric
   let numeric = confirm("Would you like your password to include numbers?")
+  if (numeric) {
+    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr);
+  }
 
   // prompt to ask for special characters
   let specialCharacters = confirm("Would you like your password to include special characters?")
-
-
-  
-  if (lowercase && uppercase) {
-    passwordchar = lowercaseArr.concat(uppercaseArr);
+  if (specialCharacters) {
+    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr, specialCharactersArr);
   }
+
+
+
+  /*
+  if (lowercase && uppercase) {
+    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr, specialCharactersArr);
+  }
+  */
+
+// Answer based on lowercase been yes
+switch (lowercase) {
+  // all criteria are checked
+  // lowercase, uppercase, number, special characters
+  case (uppercase && numeric && specialCharacters):
+    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr, specialCharactersArr); 
+  break;
+
+  // three criteria 
+  // lowercase, uppercase, number
+  case (uppercase && numeric):
+    passwordchar = lowercaseArr.concat(uppercaseArr, numbericArr); 
+  break;
+  // lowercase, uppercase, special characters
+  case (uppercase && specialCharacters):
+    passwordchar = lowercaseArr.concat(uppercaseArr, specialCharactersArr); 
+  break;
+  // lowercase, number, special characters
+  case (numeric && specialCharacters):
+    passwordchar = lowercaseArr.concat(numbericArr, specialCharactersArr); 
+  break;
+  // lowercase, number, special characters
+  case (numeric && specialCharacters):
+    passwordchar = lowercaseArr.concat(numbericArr, specialCharactersArr); 
+  break;
+
+  // lowercase, uppercase
+  case (uppercase):
+    passwordchar = lowercaseArr.concat(uppercaseArr); 
+  break;
+  // lowercase, number
+  case (numeric):
+    passwordchar = lowercaseArr.concat(numbericArr); 
+  break;
+  // lowercase, specil characters
+  case (specialCharacters):
+    passwordchar = lowercaseArr.concat(specialCharactersArr); 
+  break;
+}
+
+
+
+
 
 
 
@@ -64,15 +122,6 @@ function generatePassword(){
   for (let i = 0; i < passwordLength; i++) {
     randomPassword = randomPassword + passwordchar[Math.floor(Math.random() * passwordchar.length)];
   }
-
-
-
-
-
-
-
-
-
 
 return randomPassword;
 }
